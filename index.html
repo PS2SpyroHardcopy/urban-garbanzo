@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>asfh35675i8o890----Slicing</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div id="app">
+  <button v-on:click="activateItemPopUp">ADD ITEM</button>
+  <div :class="{popUp:addItemPopUp,hidden:true}">
+    Name:<input v-model="bassName" placeholder="Bass Name" /> Strings:
+    <input v-model="bassStrings" placeholder="# of strings" /> Price: $<input v-model="bassPrice" placeholder="Bass Price" />
+
+    <br>
+    <input v-model="bassBrand" type="radio" name="BrandR" value="Rogue">Rogue<br>
+    <input v-model="bassBrand" type="radio" name="BrandR" value="Fender">Fender<br>
+    <input v-model="bassBrand" type="radio" name="BrandR" value="Music Man">Music Man<br>
+    <button v-on:click="submit">Submit</button>
+
+  </div>
+
+  <Items v-for="bass in basses" v-bind:name="bass.name" v-bind:strings="bass.strings" v-bind:brand="bass.brand" v-bind:price="bass.price" v-bind:picture="bass.picture"  v-on:addedItemToCart="addItemsToCartFunction($event)" v-on:findIndex="indexFinder($event)"></Items>
+  <button v-on:click="clearShoppingCarts"><h1> Shopping Cart Items:  {{shoppingCartArray.length}}</h1>  </button>
+  <div v-if="basses.length == 0"><h1>STORE IS EMPTY</h1></div>
+
+</div>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>
